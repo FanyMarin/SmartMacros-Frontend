@@ -8,16 +8,21 @@ class ActualizarUsuarioForm extends Component {
   render() {
     return (
       <section className="uk-section">
-        <div className="uk-container uk-flex uk-flex-center">
+        <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+          Actualizar información
+        </h4>
+        <div className="uk-container uk-flex uk-flex-between">
+          <img
+            className="form-image container form-shadow"
+            src="../../user-update.svg"
+            alt="user update"
+          />
           <div className="uk-width-1-2 form-shadow">
-            <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-              Actualizar información
-            </h4>
-            <form className="uk-width-1-1">
+            <form className="uk-width-1-1 uk-padding">
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
-                  className="uk-text-emphasis forms-font uk-margin-left"
+                  className="uk-text-emphasis forms-font uk-margin-left uk-margin-right"
                   htmlFor="form-stacked-text"
                 >
                   Nombre:
@@ -33,7 +38,6 @@ class ActualizarUsuarioForm extends Component {
               </div>
               {/*Información nutricional */}
               <div className="uk-form-horizontal uk-margin">
-         
                 <div className="uk-margin uk-text-left">
                   <label
                     className="uk-form-label"

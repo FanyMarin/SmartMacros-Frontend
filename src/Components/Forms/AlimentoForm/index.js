@@ -8,12 +8,17 @@ class AlimentoForm extends Component {
   render() {
     return (
       <section className="uk-section">
-        <div className="uk-container uk-flex uk-flex-center">
+        <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+          Registrar alimento
+        </h4>
+        <div className="uk-container uk-flex uk-flex-between">
+        <img
+            className="form-image container form-shadow uk-padding "
+            src="../../alimento.svg"
+            alt="user update"
+          />
           <div className="uk-width-1-2 form-shadow">
-            <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-              Registrar alimento
-            </h4>
-            <form className="uk-width-1-1">
+            <form className="uk-width-1-1 uk-padding">
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label

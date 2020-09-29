@@ -7,13 +7,15 @@ class RecetaForm extends Component {
 
   render() {
     return (
-        <section className="uk-section">
-        <div className="uk-container uk-flex uk-flex-center">
+      <section className="uk-section">
+        <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+          Crear receta
+        </h4>
+        <div className="uk-container uk-flex uk-flex-between">
+        <img className="form-image container form-shadow" src="../../crear-receta.svg" alt="user update" />
+
           <div className="uk-width-1-2 form-shadow">
-            <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-              Crear receta
-            </h4>
-            <form className="uk-width-1-1">
+            <form className="uk-width-1-1 uk-padding">
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
@@ -72,8 +74,8 @@ class RecetaForm extends Component {
                   </div>
                 </div>
               </div>
-                        {/* Descripción*/}
-                        <div className="uk-margin uk-width-1-1 uk-text-left uk-margin-remove-bottom">
+              {/* Descripción*/}
+              <div className="uk-margin uk-width-1-1 uk-text-left uk-margin-remove-bottom">
                 <label
                   className="uk-text-emphasis forms-font uk-margin-left"
                   htmlFor="form-stacked-text"
@@ -88,9 +90,7 @@ class RecetaForm extends Component {
                   ></textarea>
                 </div>
               </div>
-              <div className="uk-form-horizontal uk-margin">
-              
-              </div>
+              <div className="uk-form-horizontal uk-margin"></div>
               <button className="ver-mas uk-padding-small uk-light btn">
                 Submit
               </button>
