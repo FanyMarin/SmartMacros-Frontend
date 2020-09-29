@@ -22,7 +22,7 @@ class Alimentos extends Component {
     return (
       <section className="uk-section">
         <div className="uk-container">
-          <div className="uk-grid uk-child-width-1-3">
+          <div className="uk-grid uk-grid-small uk-grid-match uk-child-width-1-3">
             {this.state.alimentos.length > 0 ? (
               this.state.alimentos.map((alimento, index) => (
                 <Card key={index} {...alimento} />

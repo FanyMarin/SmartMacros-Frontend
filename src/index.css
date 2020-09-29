@@ -295,3 +295,17 @@ form.sign-in-form {
 .ver-mas {
   background-image: linear-gradient(120deg, #EB5757 20%, #1b0909 100%);
 }
+
+/* Estilos adicionales para los formularios */
+.forms-font {
+  font-size: large;
+}
+
+.forms-title {
+  border-radius: 15px 0  0;
+}
+
+.form-shadow {
+  box-shadow: 2px 2px 5px #999;
+  border-radius: 10px;
+}
