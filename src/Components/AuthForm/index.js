@@ -1,16 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { login, signup } from "../../Services/authService"
 
 class AuthForm extends Component {
   state = {
-      user: {}
+    user: {},
   };
 
-  handleSubmit = () => {};
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { user } = this.state;
+    const isLogin = this.props.location.pathname === "/login";
+    const action = isLogin ? login : signup;
+    action(user).then((res) => {
+    //convertimos al usuario en string para poder almacenarlo en localStorage (no recibe obj)
+    const { user } = res.data;
+    localStorage.setItem("user", JSON.stringify(user))
+    })
+};
   handleChange = (e) => {
-      let { user } = this.state;
-      user = { ...user, [e.target.name]: e.target.value};
-      this.setState({ user });
+    let { user } = this.state;
+    user = { ...user, [e.target.name]: e.target.value };
+    this.setState({ user });
   };
   render() {
     const isLogin = this.props.location.pathname === "/login";
@@ -19,15 +30,27 @@ class AuthForm extends Component {
         <div className="forms-container">
           {isLogin ? (
             <div className="signin">
-              <form action="#" className="sign-in-form">
+              <form onSubmit={this.handleSubmit} className="sign-in-form">
                 <h2 className="title">Iniciar sesión</h2>
                 <div className="input-field">
                   <i className="fas fa-user"></i>
-                  <input type="text" placeholder="Nombre" />
+                  <input
+                    onChange={this.handleChange}
+                    name="email"
+                    required={true}
+                    type="email"
+                    placeholder="Correo"
+                  />
                 </div>
                 <div className="input-field">
                   <i className="fas fa-lock"></i>
-                  <input type="password" placeholder="Contraseña" />
+                  <input
+                    onChange={this.handleChange}
+                    name="password"
+                    required={true}
+                    type="password"
+                    placeholder="Contraseña"
+                  />
                 </div>
                 <input type="submit" value="Login" className="btn solid" />
               </form>
@@ -36,100 +59,145 @@ class AuthForm extends Component {
             <div className="signup">
               <div className="sign-up-form-container">
                 <h2 className="title">Regístrate</h2>
-
-                <form action="#" className="sign-up-form">
+                <form onSubmit={this.handleSubmit} className="sign-up-form">
                   <div className="input-field-signup">
                     <i className="fas fa-user"></i>
-                    <input type="text" placeholder="Nombre" />
+                    <input
+                      onChange={this.handleChange}
+                      name="nombre"
+                      //   required={true}
+                      type="text"
+                      placeholder="Nombre"
+                    />
+                  </div>
+                  <div className="input-field-signup">
+                    <i className="fas fa-envelope"></i>
+                    <input
+                      onChange={this.handleChange}
+                      name="email"
+                      //   required={true}
+                      type="email"
+                      placeholder="Correo"
+                    />
+                  </div>
+                  <div className="input-field-signup">
+                    <i className="fas fa-envelope"></i>
+                    <input
+                      onChange={this.handleChange}
+                      name="password"
+                      //   required={true}
+                      type="password"
+                      placeholder="Contraseña"
+                    />
                   </div>
                   <select
                     className="input-field-signup"
-                    name="breed"
-                    id="form-stacked-select"
+                    name="sexo"
+                    required={true}
+                    // id="genero"
                     onChange={this.handleChange}
                   >
-                    <option selected="true">Sexo</option>
+                    <option defaultValue="true">Sexo</option>
                     <option>Femenino</option>
                     <option>Masculino</option>
                   </select>
                   <div className="input-field-signup">
                     <i className="fas fa-envelope"></i>
-                    <input type="email" placeholder="Correo" />
+                    <input
+                      onChange={this.handleChange}
+                      name="edad"
+                      //   required={true}
+                      type="number"
+                      placeholder="Edad"
+                    />
                   </div>
+                  <div className="input-field-signup">
+                    <i className="fas fa-envelope"></i>
+                    <input
+                      onChange={this.handleChange}
+                      name="altura_cm"
+                      //   required={true}
+                      type="number"
+                      placeholder="Estatura en cm"
+                    />
+                  </div>
+                  <div className="input-field-signup">
+                    <i className="fas fa-envelope"></i>
+                    <input
+                      onChange={this.handleChange}
+                      name="peso_kg"
+                      //   required={true}
+                      type="number"
+                      placeholder="Peso en kg"
+                    />
+                  </div>
+
                   <select
                     className="input-field-signup"
-                    name="breed"
-                    id="form-stacked-select"
+                    name="nivel_de_actividad"
+                    // required={true}
+                    // id="actividad"
                     onChange={this.handleChange}
                   >
-                    <option selected="true">Nivel de actividad</option>
+                    <option defaultValue="true">Nivel de actividad</option>
                     <option>Bajo</option>
                     <option>Moderado</option>
                     <option>Alto</option>
                     <option>Muy alto</option>
                     <option>Hiperactivo</option>
                   </select>
-                  <div class="input-field-signup">
-                    <i class="fas fa-envelope"></i>
-                    <input type="password" placeholder="Contraseña" />
-                  </div>
+
                   <select
                     className="input-field-signup"
-                    name="breed"
-                    id="form-stacked-select"
+                    name="objetivo"
+                    // required={true}
+                    // id="finalidad"
                     onChange={this.handleChange}
                   >
-                    <option selected="true">Objetivo</option>
+                    <option defaultValue="true">Objetivo</option>
                     <option>Perder peso</option>
                     <option>Perder peso lentamente</option>
                     <option>Mantener peso</option>
                     <option>Aumentar peso lentamente</option>
                     <option>Aumentar peso</option>
                   </select>
-                  <div class="input-field-signup">
-                    <i class="fas fa-envelope"></i>
-                    <input type="number" placeholder="Edad" />
-                  </div>
+
                   <select
                     className="input-field-signup"
-                    name="breed"
-                    id="form-stacked-select"
+                    name="numero_de_comidas"
+                    // required={true}
+                    // id="cuantas_comidas"
                     onChange={this.handleChange}
                   >
-                    <option selected="true">Número de comidas</option>
+                    <option defaultValue="true">Número de comidas</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
                   </select>
-                  <div class="input-field-signup">
-                    <i class="fas fa-envelope"></i>
-                    <input type="number" placeholder="Peso en kg" />
-                  </div>
+
                   <select
                     className="input-field-signup"
-                    name="breed"
-                    id="form-stacked-select"
+                    name="tipo_de_dieta"
+                    // required={true}
+                    // id="dieta"
                     onChange={this.handleChange}
                   >
-                    <option selected="true">Tipo de dieta</option>
+                    <option defaultValue="true">Tipo de dieta</option>
                     <option>Estandar</option>
                     <option>Equilibrada</option>
                     <option>Baja en grasas</option>
                     <option>Alta en proteinas</option>
                     <option>Cetogenica</option>
                   </select>
-                  <div class="input-field-signup">
-                    <i class="fas fa-envelope"></i>
-                    <input type="number" placeholder="Estatura en cm" />
+
+                  <div className="input-field-signup">
+                    <i className="fas fa-envelope"></i>
+                    <input onChange={this.handleChange} name="foto_de_perfil" required={true} type="text" placeholder="Foto de perfil" />
                   </div>
-                  <div class="input-field-signup">
-                    <i class="fas fa-envelope"></i>
-                    <input type="image" placeholder="Foto de perfil" />
-                  </div>
+                  <input type="submit" value="Registrarse" className="btn solid" />
                 </form>
-                <input type="submit" value="Login" className="btn solid" />
               </div>
             </div>
           )}
