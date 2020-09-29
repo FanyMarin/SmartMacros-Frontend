@@ -1,56 +1,108 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/SmartMacrosLogo.png"
 
-const Navbar = ({ user, logout }) => {
+const Navbar = () => {
+  const user = {};
+  const logout = () => {}
   return (
     <header>
-      <nav className="uk-navbar-container" uk-navbar="true">
+      <nav
+        className="uk-navbar-container uk-navbar-transparent navbar-container"
+        uk-navbar="true"
+      >
         {user._id ? (
-          <div className="uk-navbar-left">
+          <div className="uk-navbar-left uk-background-contain uk-background-muted">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/">Ironbnb</Link>
-              </li>
-
-              <li>
-                <Link to="/property/new">New Property</Link>
+                <Link to="/home" className="uk-logo uk-background-contain">
+                  <img src={logo} alt="SmartMacros's App" />
+                </Link>
               </li>
             </ul>
           </div>
-        ) : null}
-        <div className="uk-navbar-right">
-          <ul className="uk-navbar-nav">
-            {user._id ? (
-              <li>
-                <Link to="/profile">
-                  <div className="uk-grid-small uk-flex-middle" uk-grid="true">
-                    <div className="uk-width-auto">
-                      <img
-                        className="uk-border-circle"
-                        width="40"
-                        height="40"
-                        alt={user.name}
-                        src={user.profile_picture}
-                      />
-                    </div>
-                    <div className="uk-width-expand">
-                      <div className="uk-margin-remove-bottom">{user.name}</div>
-                    </div>
-                  </div>
+        ) : (
+          <div className="uk-navbar-left smart-logo">
+            <ul className="uk-navbar-nav">
+              <li className="uk-active">
+                <Link to="/">
+                <img className="" src={logo} alt="SmartMacros's App" />
                 </Link>
-                <div className="uk-navbar-dropdown">
-                  <ul className="uk-nav uk-navbar-dropdown-nav">
-                    <li onClick={logout}>Logout</li>
-                  </ul>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {user._id ? (
+          <div className="uk-navbar-right">
+            <ul className="uk-navbar-nav">
+              <li>
+                <div className="uk-inline">
+                  <button
+                    className="uk-button uk-button-transparent"
+                    type="button"
+                  >
+                    <div
+                      className="uk-grid-small uk-flex-middle"
+                      uk-grid="true"
+                    >
+                      <div className="uk-width-auto">
+                        <img
+                          className="uk-border-circle"
+                          alt={user.name}
+                          src={user.avatar || "https://api.adorable.io/avatars/80/abott@adorable.png"}
+                        />
+                      </div>
+                      <div className="uk-width-expand">
+                        <div className="uk-margin-remove-bottom uk-user">
+                          {user.name}
+                        </div>
+                      </div>
+                    </div>{" "}
+                  </button>
+                  <div uk-dropdown="pos: bottom-justify">
+                    <ul className="uk-nav uk-dropdown-nav">
+                      <li className="uk-nav-header">
+                        <Link to="/profile">
+                          <span
+                            className="uk-margin-small-right"
+                            uk-icon="icon: user"
+                          ></span>{" "}
+                          Profile
+                        </Link>
+                      </li>
+
+                      <li className="uk-nav-header" onClick={logout}>
+                        <Link to="">
+                          <span
+                            className="uk-margin-small-right"
+                            uk-icon="icon: sign-out"
+                          ></span>
+                          Logout
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </li>
-            ) : (
+            </ul>
+          </div>
+        ) : (
+          <div className="uk-navbar-right">
+            <ul className="uk-navbar-nav">
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/signup">
+                  Registrate
+                </Link>
               </li>
-            )}
-          </ul>
-        </div>
+              <li>
+                <Link to="/login">
+                  Iniciar sesion
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
   );

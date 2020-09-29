@@ -18,6 +18,11 @@ code {
     monospace;
 }
 
+.navbar-container{
+  background-image: linear-gradient(120deg, #000000 20%, #361313 100%);
+  display: flex;
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -282,6 +287,7 @@ form.sign-in-form {
   transform: translateX(600px);
 }
 
-.showPassword {
-  z-index: 7;
+.smart-logo {
+  flex: 0 0 200px;
+  margin-left: 20px;
 }
