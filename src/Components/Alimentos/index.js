@@ -11,7 +11,10 @@ class Alimentos extends Component {
   //esa informacion antes de que se renderice la vista de los alimentos:
   componentDidMount() {
       getAlimentos().then(res => {
-          console.log(res)
+        console.log(res)
+          //Vamos a sacar lo que hay en la llave de results de la consola, le daremos el alias de products y lo setearemos en el estado
+        const { result: alimentos} = res.data;
+        this.setState({ alimentos })
       })
   }
 
@@ -19,7 +22,7 @@ class Alimentos extends Component {
     return (
       <section className="uk-section">
         <div className="uk-container">
-          <div className="uk-grid">
+          <div className="uk-grid uk-child-width-1-3">
             {this.state.alimentos.length > 0 ? (
               this.state.alimentos.map((alimento, index) => (
                 <Card key={index} {...alimento} />
@@ -27,6 +30,7 @@ class Alimentos extends Component {
             ) : (
               <div className="uk-alert-primary" uk-alert="true">
                 <p>No hay alimentos.</p>
+                <p>PON BOTON PARA CREAR ALIMENTO QUE NOS LLEVE A SU FORMULARIO</p>
               </div>
             )}
           </div>

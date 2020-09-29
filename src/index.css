@@ -291,3 +291,7 @@ form.sign-in-form {
   flex: 0 0 200px;
   margin-left: 20px;
 }
+
+.ver-mas {
+  background-image: linear-gradient(120deg, #EB5757 20%, #1b0909 100%);
+}
