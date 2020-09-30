@@ -5,6 +5,10 @@ class RecetaForm extends Component {
     receta: {},
   };
 
+  handleChange = (e) => {
+    console.log(e.target.value);
+  };
+
   render() {
     return (
       <section className="uk-section">
@@ -12,7 +16,11 @@ class RecetaForm extends Component {
           Crear receta
         </h4>
         <div className="uk-container uk-flex uk-flex-between">
-        <img className="form-image container form-shadow" src="../../crear-receta.svg" alt="user update" />
+          <img
+            className="form-image container form-shadow"
+            src="../../crear-receta.svg"
+            alt="user update"
+          />
 
           <div className="uk-width-1-2 form-shadow">
             <form className="uk-width-1-1 uk-padding">
@@ -20,12 +28,13 @@ class RecetaForm extends Component {
               <div className="uk-width-1-1 uk-text-left">
                 <label
                   className="uk-text-emphasis forms-font uk-margin-left"
-                  htmlFor="form-stacked-text"
+                  htmlFor="Nombre"
                 >
                   Nombre:
                 </label>
                 <div className="uk-form-controls">
                   <input
+                    name="Nombre"
                     className="uk-input"
                     id="form-stacked-text"
                     type="text"
@@ -33,27 +42,31 @@ class RecetaForm extends Component {
                   />
                 </div>
               </div>
+
               {/* Descripción*/}
               <div className="uk-margin uk-width-1-1 uk-text-left uk-margin-remove-bottom">
                 <label
                   className="uk-text-emphasis forms-font uk-margin-left"
-                  htmlFor="form-stacked-text"
+                  htmlFor="Descripcion"
                 >
                   Descripción:
                 </label>
                 <div>
                   <textarea
+                    name="Descripcion"
+                    id="Descripcion"
                     className="uk-textarea"
                     rows="5"
                     placeholder="Descripción del alimento (opcional)..."
                   ></textarea>
                 </div>
               </div>
+
               {/* Cantidad */}
               <div className="uk-margin uk-width-1-1 uk-text-left">
                 <label
                   className="uk-text-emphasis forms-font uk-margin-left "
-                  htmlFor="form-stacked-text"
+                  htmlFor="Cantidad"
                 >
                   Cantidad:
                 </label>
@@ -66,7 +79,7 @@ class RecetaForm extends Component {
                     />
                   </div>
                   <div className="uk-form-controls uk-width-1-2">
-                    <select className="uk-select" id="form-horizontal-select">
+                    <select className="uk-select" id="Cantidad">
                       <option>gr</option>
                       <option>ml</option>
                       <option>contenedor</option>
@@ -74,6 +87,7 @@ class RecetaForm extends Component {
                   </div>
                 </div>
               </div>
+
               {/* Descripción*/}
               <div className="uk-margin uk-width-1-1 uk-text-left uk-margin-remove-bottom">
                 <label
