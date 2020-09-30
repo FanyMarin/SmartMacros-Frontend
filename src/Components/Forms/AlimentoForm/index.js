@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { createAlimento } from "../../../Services/alimentosService";
 
 class AlimentoForm extends Component {
   state = {
@@ -13,8 +14,20 @@ class AlimentoForm extends Component {
   //Cuando estas escribiendo en el hadleChange vas a ir filtrando todos los elementos con base en
   //el nombre. Entonces, se va a comparar "Si el nombre contiene las letras que te estoy pasando
   //entonces si lo agregas como un resultado posible"
+
   handleChange = (e) => {
-    console.log(e.target.value);
+    let { alimento } = this.state;
+    alimento = { ...alimento, [e.target.name]: e.target.value };
+    this.setState({ alimento });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { alimento } = this.state;
+    console.log(alimento);
+    createAlimento(alimento).then((res) => {
+      console.log(res);
+    });
   };
 
   render() {
@@ -30,7 +43,10 @@ class AlimentoForm extends Component {
             alt="user update"
           />
           <div className="uk-width-1-2 form-shadow">
-            <form className="uk-width-1-1 uk-padding">
+            <form
+              className="uk-width-1-1 uk-padding"
+              onSubmit={this.handleSubmit}
+            >
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
@@ -91,27 +107,29 @@ class AlimentoForm extends Component {
                 </div>
               </div>
 
-              {/* Cantidad */}
+              {/* Porcion */}
               <div className="uk-margin uk-width-1-1 uk-text-left">
                 <label
                   className="uk-text-emphasis forms-font uk-margin-left "
-                  htmlFor="Cantidad"
+                  htmlFor="Porcion"
                 >
                   Cantidad:
                 </label>
                 <div className="uk-grid-small" uk-grid="true">
                   <div className="uk-width-1-2@s">
                     <input
-                      name="Cantidad"
+                      onChange={this.handleChange}
+                      name="Porcion"
                       className="uk-input"
-                      type="text"
+                      type="number"
                       placeholder="Porción"
                     />
                   </div>
                   <div className="uk-form-controls uk-width-1-2">
                     <select
+                      name="Unidad_de_medida"
                       className="uk-select"
-                      id="Cantidad"
+                      id="Unidad_de_medida"
                       onChange={this.handleChange}
                     >
                       <option defaultValue="true">Unidad de medida</option>

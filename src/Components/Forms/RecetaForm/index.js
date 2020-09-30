@@ -5,8 +5,16 @@ class RecetaForm extends Component {
     receta: {},
   };
 
+  handleSubmit = (e) => {
+    //Para evitar que se refresque el navegador (comportamiento default de una form)
+    e.preventDefault();
+  }
+
   handleChange = (e) => {
-    console.log(e.target.value);
+    let { receta } = this.state;
+    receta = { ...receta, [e.target.name]: e.target.value };
+    this.setState({ receta });
+    console.log(receta);
   };
 
   render() {
@@ -23,7 +31,7 @@ class RecetaForm extends Component {
           />
 
           <div className="uk-width-1-2 form-shadow">
-            <form className="uk-width-1-1 uk-padding">
+            <form className="uk-width-1-1 uk-padding" onSubmit={this.handleSubmit}>
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
@@ -34,6 +42,7 @@ class RecetaForm extends Component {
                 </label>
                 <div className="uk-form-controls">
                   <input
+                  onChange={this.handleChange}
                     name="Nombre"
                     className="uk-input"
                     id="form-stacked-text"
@@ -53,6 +62,7 @@ class RecetaForm extends Component {
                 </label>
                 <div>
                   <textarea
+                  onChange={this.handleChange}
                     name="Descripcion"
                     id="Descripcion"
                     className="uk-textarea"
@@ -73,6 +83,7 @@ class RecetaForm extends Component {
                 <div className="uk-grid-small" uk-grid="true">
                   <div className="uk-width-1-2@s">
                     <input
+                    onChange={this.handleChange}
                       className="uk-input"
                       type="text"
                       placeholder="Porción"

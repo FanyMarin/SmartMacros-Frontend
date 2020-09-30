@@ -2,11 +2,15 @@ import React, { Component } from "react";
 
 class ActualizarUsuarioForm extends Component {
   state = {
-    alimento: {},
+    usuario: {},
   };
 
+  handleSubmit = () => {}
   handleChange = (e) => {
-    console.log(e.target.value);
+    let { usuario } = this.state;
+    usuario = { ...usuario, [e.target.name]: e.target.value };
+    this.setState({ usuario });
+    console.log(usuario);
   };
 
   render() {
@@ -23,7 +27,7 @@ class ActualizarUsuarioForm extends Component {
           />
 
           <div className="uk-width-1-2 form-shadow">
-            <form className="uk-width-1-1 uk-padding">
+            <form className="uk-width-1-1 uk-padding" onSubmit={this.handleSubmit}>
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
@@ -151,6 +155,7 @@ class ActualizarUsuarioForm extends Component {
                     </select>
                   </div>
                 </div>
+
                 {/* Edad */}
                 <div className="uk-margin uk-text-left">
                   <label className="uk-form-label" htmlFor="edad">
