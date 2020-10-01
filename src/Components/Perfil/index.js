@@ -7,29 +7,29 @@ import { Link } from "react-router-dom";
 const Perfil = () => {
   return (
     <div className="uk-flex uk-flex-between">
-      <div uk-sticky="true uk-margin-xlarge-right">
         <SideNavbar />
-      </div>
 
-      <div>
-        <div className="uk-margin-xlarge uk-padding ">
-          <h4 className=" forms-title ver-mas uk-padding-small uk-margin-small-bottom uk-margin-large-top uk-light uk-text-uppercase uk-text-bold">
+      <div className="profile-main">
+        <div className="uk-padding uk-padding-remove-bottom">
+          <h4 className=" forms-title ver-mas uk-padding-small uk-margin-small-bottom uk-light uk-text-uppercase uk-text-bold">
             Resultados
           </h4>
           <hr></hr>
-          <Resultados />
+          <Resultados/>
           <Link to="">
             <button className="btn">Actualizar</button>
           </Link>
           <hr></hr>
         </div>
-        <div className="uk-margin-xlarge uk-padding">
-          <h4 className=" forms-title ver-mas uk-padding-small uk-margin-small-bottom uk-margin-large-top uk-light uk-text-uppercase uk-text-bold">
+        <div className="uk-padding uk-padding-small-top">
+          <h4 className=" forms-title ver-mas uk-padding-small uk-margin-small-bottom uk-light uk-text-uppercase uk-text-bold">
             Mi información
           </h4>
-          <div className="uk-flex">
-            <MiInformacion />
+          <div className="main-my-info">
+            <MiInformacion className="my-info"/>
             <img src="../perfil.svg" className="uk-width-1-3" alt="Disfruta" />
+          </div>
+          <div className="btn-wrapper">
             <Link to="/users/actualizar/:id">
               <button className="btn">Actualizar</button>
             </Link>

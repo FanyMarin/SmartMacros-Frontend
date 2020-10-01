@@ -346,7 +346,7 @@ form.sign-in-form {
   background-image: linear-gradient(120deg, #241f1f 5%, #000000 100%);
   display: flex;
   padding-top: 20px;
-  min-width: 200px;
+  min-width: 250px;
 }
 
 /* Estilos Landing */
@@ -478,3 +478,40 @@ nav ul a:hover,
   color: gray;
 }
 
+.food-not-found {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Estilos my info */
+.main-my-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn-wrapper {
+  margin-top: 20px;
+}
+
+.main-wrapper {
+  display: flex;
+}
+
+.wrapper-alimentos {
+  display: flex;
+  flex-direction: column;
+  /* width: 60%; */
+  /* margin-left: 10%; */
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+}

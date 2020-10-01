@@ -12,19 +12,20 @@ class AuthForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { user } = this.state;
     const isLogin = this.props.location.pathname === "/login";
+    const { setUser } = this.context;
+    const { user } = this.state;
     const action = isLogin ? login : signup;
     const { history } = this.props;
-    const nextRoute = isLogin ? "/" : "/login";
+    const nextRoute = isLogin ? "/users/my-info" : "/login";
     action(user)
-      .then((res) => {  
+      .then((res) => {
         if (isLogin) {
           const { user } = res.data;
           localStorage.setItem("user", JSON.stringify(user));
+          setUser(user);
         }
         history.push(nextRoute);
-        console.log(nextRoute)
       })
       .catch((err) => {
         UIkit.notification({
@@ -38,6 +39,7 @@ class AuthForm extends Component {
   handleChange = (e) => {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
+    console.log(user);
     this.setState({ user });
   };
   render() {
@@ -202,8 +204,8 @@ class AuthForm extends Component {
                     <option>Perder peso</option>
                     <option>Perder peso lentamente</option>
                     <option>Mantener peso</option>
-                    <option>Aumentar peso lentamente</option>
-                    <option>Aumentar peso</option>
+                    <option>Aumentar masa muscular lentamente</option>
+                    <option>Aumentar masa muscular</option>
                   </select>
 
                   {/* Numero de comidas */}
@@ -232,11 +234,11 @@ class AuthForm extends Component {
                       required={true}
                     >
                       <option defaultValue="true">Dieta</option>
-                      <option>Estandar</option>
+                      <option>Estándar</option>
                       <option>Equilibrada</option>
                       <option>Baja en grasas</option>
-                      <option>Alta en proteinas</option>
-                      <option>Cetogenica</option>
+                      <option>Alta en proteínas</option>
+                      <option>Cetogénica</option>
                     </select>
                     <button type="submit" className="btn solid">
                       Registrarse
