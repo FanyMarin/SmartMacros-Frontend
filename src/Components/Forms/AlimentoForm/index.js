@@ -24,9 +24,8 @@ class AlimentoForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { alimento } = this.state;
-    console.log(alimento);
+    // console.log(alimento);
     createAlimento(alimento).then((res) => {
-      console.log(res);
     });
   };
 

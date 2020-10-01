@@ -1,27 +1,45 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import UIkit from "uikit";
+import AppContext from "../../AppContext";
 import { login, signup } from "../../Services/authService";
 
 class AuthForm extends Component {
+  static contextType = AppContext;
   state = {
     user: {},
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { user } = this.state;
     const isLogin = this.props.location.pathname === "/login";
+    const { setUser } = this.context;
+    const { user } = this.state;
     const action = isLogin ? login : signup;
-    action(user).then((res) => {
-      //convertimos al usuario en string para poder almacenarlo en localStorage (no recibe obj)
-      const { user } = res.data;
-      localStorage.setItem("user", JSON.stringify(user));
-    });
+    const { history } = this.props;
+    const nextRoute = isLogin ? "/users/my-info" : "/login";
+    action(user)
+      .then((res) => {
+        if (isLogin) {
+          const { user } = res.data;
+          localStorage.setItem("user", JSON.stringify(user));
+          setUser(user);
+        }
+        history.push(nextRoute);
+      })
+      .catch((err) => {
+        UIkit.notification({
+          message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
+          status: "danger",
+          pos: "top-right",
+        });
+      });
   };
+
   handleChange = (e) => {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
-    // console.log(user)
+    console.log(user);
     this.setState({ user });
   };
   render() {
@@ -186,8 +204,8 @@ class AuthForm extends Component {
                     <option>Perder peso</option>
                     <option>Perder peso lentamente</option>
                     <option>Mantener peso</option>
-                    <option>Aumentar peso lentamente</option>
-                    <option>Aumentar peso</option>
+                    <option>Aumentar masa muscular lentamente</option>
+                    <option>Aumentar masa muscular</option>
                   </select>
 
                   {/* Numero de comidas */}
@@ -216,11 +234,11 @@ class AuthForm extends Component {
                       required={true}
                     >
                       <option defaultValue="true">Dieta</option>
-                      <option>Estandar</option>
+                      <option>Estándar</option>
                       <option>Equilibrada</option>
                       <option>Baja en grasas</option>
-                      <option>Alta en proteinas</option>
-                      <option>Cetogenica</option>
+                      <option>Alta en proteínas</option>
+                      <option>Cetogénica</option>
                     </select>
                     <button type="submit" className="btn solid">
                       Registrarse
