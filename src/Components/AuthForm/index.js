@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UIkit from "uikit";
+import AppContext from "../../AppContext";
 import { login, signup } from "../../Services/authService";
 
 class AuthForm extends Component {
+  static contextType = AppContext;
   state = {
     user: {},
   };
@@ -13,10 +15,16 @@ class AuthForm extends Component {
     const { user } = this.state;
     const isLogin = this.props.location.pathname === "/login";
     const action = isLogin ? login : signup;
+    const { history } = this.props;
+    const nextRoute = isLogin ? "/" : "/login";
     action(user)
       .then((res) => {  
-        const { user } = res.data;
-        localStorage.setItem("user", JSON.stringify(user));
+        if (isLogin) {
+          const { user } = res.data;
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+        history.push(nextRoute);
+        console.log(nextRoute)
       })
       .catch((err) => {
         UIkit.notification({

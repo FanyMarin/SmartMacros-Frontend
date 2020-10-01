@@ -3,7 +3,7 @@ import React from "react";
 const MiInformacion = () => {
   return (
     <div>
-      <table class="uk-table uk-table-striped">
+      <table className="uk-table uk-table-striped">
         <tbody>
           <tr>
             <td className="uk-text-justify">NOMBRE:</td>

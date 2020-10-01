@@ -440,3 +440,41 @@ form.sign-in-form {
 .table-title {
   background-color: darkcyan;
 }
+
+/* Estilos NavBar */
+.navbar-wrapper {
+  background-image: linear-gradient(120deg, #000000 5%, #EB5757 100%);
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+nav ul a {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+} 
+
+nav ul a:hover,
+.navbar-wrapper li:hover {
+  text-decoration: none;
+  color: gray;
+}
+
