@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SideNavbar from "../../Navbar/SideNavbar";
 
 class RecetaForm extends Component {
   state = {
@@ -8,7 +9,7 @@ class RecetaForm extends Component {
   handleSubmit = (e) => {
     //Para evitar que se refresque el navegador (comportamiento default de una form)
     e.preventDefault();
-  }
+  };
 
   handleChange = (e) => {
     let { receta } = this.state;
@@ -19,19 +20,23 @@ class RecetaForm extends Component {
 
   render() {
     return (
-      <section className="uk-section">
-        <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-          Crear receta
-        </h4>
-        <div className="uk-container uk-flex uk-flex-between">
+      <section className="uk-section uk-margin-remove uk-padding-remove">
+        <div className="uk-container uk-flex uk-flex-between uk-padding-remove uk-margin-remove">
+          <SideNavbar />
           <img
-            className="form-image container form-shadow"
+            className="form-image"
             src="../../crear-receta.svg"
             alt="user update"
           />
 
           <div className="uk-width-1-2 form-shadow">
-            <form className="uk-width-1-1 uk-padding" onSubmit={this.handleSubmit}>
+            <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+              Registrar alimento
+            </h4>
+            <form
+              className="uk-width-1-1 uk-padding"
+              onSubmit={this.handleSubmit}
+            >
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
@@ -42,7 +47,7 @@ class RecetaForm extends Component {
                 </label>
                 <div className="uk-form-controls">
                   <input
-                  onChange={this.handleChange}
+                    onChange={this.handleChange}
                     name="Nombre"
                     className="uk-input"
                     id="form-stacked-text"
@@ -62,7 +67,7 @@ class RecetaForm extends Component {
                 </label>
                 <div>
                   <textarea
-                  onChange={this.handleChange}
+                    onChange={this.handleChange}
                     name="Descripcion"
                     id="Descripcion"
                     className="uk-textarea"
@@ -83,7 +88,7 @@ class RecetaForm extends Component {
                 <div className="uk-grid-small" uk-grid="true">
                   <div className="uk-width-1-2@s">
                     <input
-                    onChange={this.handleChange}
+                      onChange={this.handleChange}
                       className="uk-input"
                       type="text"
                       placeholder="Porción"

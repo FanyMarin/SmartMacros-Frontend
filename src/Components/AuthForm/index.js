@@ -21,6 +21,7 @@ class AuthForm extends Component {
   handleChange = (e) => {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
+    // console.log(user)
     this.setState({ user });
   };
   render() {

@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/SmartMacrosLogo.png"
 
 const Navbar = () => {
   const user = {};
-  const logout = () => {}
+  // const logout = () => {};
   return (
     <header>
       <nav
@@ -16,17 +15,31 @@ const Navbar = () => {
             <ul className="uk-navbar-nav">
               <li className="uk-active">
                 <Link to="/home" className="uk-logo uk-background-contain">
-                  <img src={logo} alt="SmartMacros's App" />
+                  <div className="footer-smart-logo">
+                    <img
+                      src="../manzana.svg"
+                      className="smart-apple"
+                      alt="Smart Macros logo"
+                    />
+                    <h1>Smart Macros</h1>
+                  </div>
                 </Link>
               </li>
             </ul>
           </div>
         ) : (
-          <div className="uk-navbar-left smart-logo">
+          <div>
             <ul className="uk-navbar-nav">
               <li className="uk-active">
                 <Link to="/">
-                <img className="" src={logo} alt="SmartMacros's App" />
+                  <div className="footer-smart-logo">
+                    <img
+                      src="../manzana.svg"
+                      className="smart-apple"
+                      alt="Smart Macros logo"
+                    />
+                    <h1>Smart Macros</h1>
+                  </div>
                 </Link>
               </li>
             </ul>
@@ -34,75 +47,16 @@ const Navbar = () => {
         )}
 
         {user._id ? (
-          <div className="uk-navbar-right">
-            <ul className="uk-navbar-nav">
-              <li>
-                <div className="uk-inline">
-                  <button
-                    className="uk-button uk-button-transparent"
-                    type="button"
-                  >
-                    <div
-                      className="uk-grid-small uk-flex-middle"
-                      uk-grid="true"
-                    >
-                      <div className="uk-width-auto">
-                        <img
-                          className="uk-border-circle"
-                          alt={user.name}
-                          src={user.avatar || "https://api.adorable.io/avatars/80/abott@adorable.png"}
-                        />
-                      </div>
-                      <div className="uk-width-expand">
-                        <div className="uk-margin-remove-bottom uk-user">
-                          {user.name}
-                        </div>
-                      </div>
-                    </div>{" "}
-                  </button>
-                  <div uk-dropdown="pos: bottom-justify">
-                    <ul className="uk-nav uk-dropdown-nav">
-                      <li className="uk-nav-header">
-                        <Link to="/profile">
-                          <span
-                            className="uk-margin-small-right"
-                            uk-icon="icon: user"
-                          ></span>{" "}
-                          Profile
-                        </Link>
-                      </li>
-
-                      <li className="uk-nav-header" onClick={logout}>
-                        <Link to="">
-                          <span
-                            className="uk-margin-small-right"
-                            uk-icon="icon: sign-out"
-                          ></span>
-                          Logout
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          <div className="uk-navbar-right">
-            <ul className="uk-navbar-nav">
-              <li>
-                <Link to="/signup">
-                  Registrate
-                </Link>
-              </li>
-              <li>
-                <Link to="/login">
-                  Iniciar sesion
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
+          <li>
+            <a href="/">
+              <span
+                className="nav-text uk-margin-small-right"
+                uk-icon="icon: sign-out; ratio: 1.1"
+              ></span>
+              <span className="nav-text">Salir</span>
+            </a>
+          </li>
+        ) : null}
       </nav>
     </header>
   );

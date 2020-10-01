@@ -1,63 +1,64 @@
 import React, { Component } from "react";
 import Card from "../Card";
-import { getAlimentos } from "../../Services/alimentosService";
-import { getMisAlimentos } from "../../Services/alimentosService";
+import { getRecetas } from "../../Services/recetasService";
+import { getMisRecetas } from "../../Services/recetasService";
 import SideNavbar from "../Navbar/SideNavbar";
-class Alimentos extends Component {
+
+class Receta extends Component {
   state = {
-    alimentos: [],
-    misAlimentos: [],
+    recetas: [],
+    misRecetas: [],
   };
 
   //Tengo que hacer la peticion de los alimentos de la db en componentDidMount(), porque necesito
   //esa informacion antes de que se renderice la vista de los alimentos:
   componentDidMount() {
-    getAlimentos().then((res) => {
+    getRecetas().then((res) => {
       console.log(res);
       //Vamos a sacar lo que hay en la llave de results de la consola, le daremos el alias de products y lo setearemos en el estado
-      const { result: alimentos } = res.data;
-      this.setState({ alimentos });
+      const { result: recetas } = res.data;
+      this.setState({ recetas });
     });
 
-    getMisAlimentos().then((res) => {
+    getMisRecetas().then((res) => {
       console.log(res);
       //Vamos a sacar lo que hay en la llave de results de la consola, le daremos el alias de products y lo setearemos en el estado
-      const { result: misAlimentos } = res.data;
-      this.setState({ misAlimentos });
+      const { result: misRecetas } = res.data;
+      this.setState({ misRecetas });
     });
   }
 
   render() {
-    const isAliments = this.props.location.pathname === "/alimentos";
+    const isRecetas = this.props.location.pathname === "/recetas";
     return (
       <section className="uk-section uk-margin-remove uk-padding-remove">
         <div className="uk-container uk-flex uk-padding-remove uk-margin-remove">
           <SideNavbar />
-          {isAliments ? (
+          {isRecetas ? (
             <div className="uk-flex-center uk-margin-large-left uk-margin-large-bottom uk-margin-remove-right uk-grid uk-grid-small uk-grid-match uk-child-width-1-3">
-              {this.state.alimentos.length > 0 ? (
-                this.state.alimentos.map((alimento, index) => (
-                  <Card key={index} {...alimento} />
+              {this.state.recetas.length > 0 ? (
+                this.state.recetas.map((receta, index) => (
+                  <Card key={index} {...receta} />
                 ))
               ) : (
                 <div className="uk-alert-primary" uk-alert="true">
-                  <p>No hay alimentos.</p>
-                  <button>Crear alimento</button>
+                  <p>No hay recetas.</p>
+                  <button>Crear receta</button>
                 </div>
               )}
             </div>
           ) : (
             <div className="uk-flex-center uk-margin-large-left uk-margin-large-bottom uk-margin-remove-right uk-grid uk-grid-small uk-grid-match uk-child-width-1-3">
-              {this.state.misAlimentos.length > 0 ? (
-                this.state.misAlimentos.map((misAlimentos, index) => (
-                  <Card key={index} {...misAlimentos} />
+              {this.state.misRecetas.length > 0 ? (
+                this.state.misRecetas.map((misRecetas, index) => (
+                  <Card key={index} {...misRecetas} />
                 ))
               ) : (
                 <div>
                   <div className="uk-alert-primary" uk-alert="true">
-                    <p>No hay alimentos.</p>
+                    <p>No hay recetas.</p>
                   </div>
-                  <button>Crear alimento</button>
+                  <button>Crear recetas</button>
                 </div>
               )}
             </div>
@@ -68,4 +69,4 @@ class Alimentos extends Component {
   }
 }
 
-export default Alimentos;
+export default Receta;

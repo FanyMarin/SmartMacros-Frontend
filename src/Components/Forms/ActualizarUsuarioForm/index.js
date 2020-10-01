@@ -1,11 +1,13 @@
+//No sirve :c
 import React, { Component } from "react";
+import SideNavbar from "../../Navbar/SideNavbar";
 
 class ActualizarUsuarioForm extends Component {
   state = {
     usuario: {},
   };
 
-  handleSubmit = () => {}
+  handleSubmit = () => {};
   handleChange = (e) => {
     let { usuario } = this.state;
     usuario = { ...usuario, [e.target.name]: e.target.value };
@@ -15,19 +17,23 @@ class ActualizarUsuarioForm extends Component {
 
   render() {
     return (
-      <section className="uk-section">
-        <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-          Actualizar información
-        </h4>
-        <div className="uk-container uk-flex uk-flex-between">
+      <section className="uk-section uk-margin-remove uk-padding-remove">
+        <div className="uk-container uk-flex uk-flex-between uk-padding-remove uk-margin-remove">
+            <SideNavbar />
           <img
-            className="form-image container form-shadow"
+            className="form-image"
             src="../../user-update.svg"
             alt="user update"
           />
 
           <div className="uk-width-1-2 form-shadow">
-            <form className="uk-width-1-1 uk-padding" onSubmit={this.handleSubmit}>
+          <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+          Actualizar información
+        </h4>
+            <form
+              className="uk-width-1-1 uk-padding"
+              onSubmit={this.handleSubmit}
+            >
               {/*Nombre*/}
               <div className="uk-width-1-1 uk-text-left">
                 <label
