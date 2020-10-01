@@ -23,17 +23,6 @@ const SideNavbar = () => {
           <hr></hr>
 
           <li>
-            <Link to="/distribucion-macros/mis-resultados">
-              <span
-                className="uk-margin-small-right"
-                uk-icon="icon: heart; ratio: 1.1"
-              ></span>
-              <span className="uk-text-right">Mis resultados</span>
-            </Link>
-          </li>
-          <hr></hr>
-
-          <li>
             <Link to="/registros/mis-registros">
               <span
                 className="uk-margin-small-right"
