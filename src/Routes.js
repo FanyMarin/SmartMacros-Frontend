@@ -5,8 +5,6 @@ import LandingPage from "./Components/Landing";
 import ActualizarUsuarioForm from "./Components/Forms/ActualizarUsuarioForm/index";
 import Alimentos from "./Components/Alimentos"
 import AlimentoForm from "./Components/Forms/AlimentoForm/index";
-import Receta from "./Components/Recetas/index"
-import RecetaForm from "./Components/Forms/RecetaForm/index";
 import Perfil from "./Components/Perfil/index"
 
 const Routes = () => (
@@ -21,10 +19,6 @@ const Routes = () => (
         <Route exact path="/alimentos" component={Alimentos}/> 
         <Route exact path="/alimentos/mis-alimentos" component={Alimentos} />
         <Route exact path="/alimentos/crear-alimento" component={AlimentoForm}/> 
-        <Route exact path="/recetas" component={Receta} />
-        <Route exact path="/recetas/crear-receta" component={RecetaForm}/> 
-        <Route exact path="/recetas/mis-recetas" component={Receta} />
-
     </Switch>
 )
 

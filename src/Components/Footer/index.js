@@ -4,16 +4,14 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer-wrapper">
-      <Link to="#">
-        <div className="footer-smart-logo">
-          <img
-            src="../manzana.svg"
-            className="smart-apple"
-            alt="Smart Macros logo"
-          />
-          <h1>Smart Macros</h1>
-        </div>
-      </Link>
+      <div className="footer-smart-logo">
+        <img
+          src="../manzana.svg"
+          className="smart-apple"
+          alt="Smart Macros logo"
+        />
+        <h1>Smart Macros</h1>
+      </div>
 
       <div className="footer-contact-us">
         <ul className="social-links">

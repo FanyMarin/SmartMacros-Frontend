@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import UIkit from "uikit";
 import { login, signup } from "../../Services/authService";
 
 class AuthForm extends Component {
@@ -12,16 +13,23 @@ class AuthForm extends Component {
     const { user } = this.state;
     const isLogin = this.props.location.pathname === "/login";
     const action = isLogin ? login : signup;
-    action(user).then((res) => {
-      //convertimos al usuario en string para poder almacenarlo en localStorage (no recibe obj)
-      const { user } = res.data;
-      localStorage.setItem("user", JSON.stringify(user));
-    });
+    action(user)
+      .then((res) => {  
+        const { user } = res.data;
+        localStorage.setItem("user", JSON.stringify(user));
+      })
+      .catch((err) => {
+        UIkit.notification({
+          message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
+          status: "danger",
+          pos: "top-right",
+        });
+      });
   };
+
   handleChange = (e) => {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
-    // console.log(user)
     this.setState({ user });
   };
   render() {

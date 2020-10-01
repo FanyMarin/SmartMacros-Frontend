@@ -1,27 +1,23 @@
 import React, { Component } from "react";
-import Card from "../Card";
+import TablaAlimentos from "../Alimentos/tablaAlimentos";
 import { getAlimentos } from "../../Services/alimentosService";
 import { getMisAlimentos } from "../../Services/alimentosService";
 import SideNavbar from "../Navbar/SideNavbar";
+import { Link } from "react-router-dom";
 class Alimentos extends Component {
   state = {
     alimentos: [],
     misAlimentos: [],
   };
 
-  //Tengo que hacer la peticion de los alimentos de la db en componentDidMount(), porque necesito
-  //esa informacion antes de que se renderice la vista de los alimentos:
   componentDidMount() {
     getAlimentos().then((res) => {
-      console.log(res);
-      //Vamos a sacar lo que hay en la llave de results de la consola, le daremos el alias de products y lo setearemos en el estado
       const { result: alimentos } = res.data;
       this.setState({ alimentos });
     });
 
     getMisAlimentos().then((res) => {
       console.log(res);
-      //Vamos a sacar lo que hay en la llave de results de la consola, le daremos el alias de products y lo setearemos en el estado
       const { result: misAlimentos } = res.data;
       this.setState({ misAlimentos });
     });
@@ -30,14 +26,17 @@ class Alimentos extends Component {
   render() {
     const isAliments = this.props.location.pathname === "/alimentos";
     return (
-      <section className="uk-section uk-margin-remove uk-padding-remove">
-        <div className="uk-container uk-flex uk-padding-remove uk-margin-remove">
+      <div>
+        <div className="uk-flex">
           <SideNavbar />
           {isAliments ? (
-            <div className="uk-flex-center uk-margin-large-left uk-margin-large-bottom uk-margin-remove-right uk-grid uk-grid-small uk-grid-match uk-child-width-1-3">
+            <div>
+              <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+                Lista de alimentos
+              </h4>
               {this.state.alimentos.length > 0 ? (
                 this.state.alimentos.map((alimento, index) => (
-                  <Card key={index} {...alimento} />
+                  <TablaAlimentos key={index} {...alimento} />
                 ))
               ) : (
                 <div className="uk-alert-primary" uk-alert="true">
@@ -47,10 +46,13 @@ class Alimentos extends Component {
               )}
             </div>
           ) : (
-            <div className="uk-flex-center uk-margin-large-left uk-margin-large-bottom uk-margin-remove-right uk-grid uk-grid-small uk-grid-match uk-child-width-1-3">
+            <div>
+              <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+                Lista de alimentos
+              </h4>
               {this.state.misAlimentos.length > 0 ? (
                 this.state.misAlimentos.map((misAlimentos, index) => (
-                  <Card key={index} {...misAlimentos} />
+                  <TablaAlimentos key={index} {...misAlimentos} />
                 ))
               ) : (
                 <div>
@@ -62,8 +64,14 @@ class Alimentos extends Component {
               )}
             </div>
           )}
+          <h4 className="forms-title uk-margin-small uk-margin-top">
+            ¿No encuentras lo que buscas?{" "}
+            <Link to="/alimentos/crear-alimento">
+              <button className="btn">Crear alimento</button>
+            </Link>
+          </h4>
         </div>
-      </section>
+      </div>
     );
   }
 }

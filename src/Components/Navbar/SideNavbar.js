@@ -45,17 +45,6 @@ const SideNavbar = () => {
           <hr></hr>
 
           <li>
-            <Link to="/recetas/mis-recetas/">
-              <span
-                className="uk-margin-small-right"
-                uk-icon="icon: list; ratio: 1.1"
-              ></span>
-              <span>Mis recetas</span>
-            </Link>
-          </li>
-          <hr></hr>
-
-          <li>
             <Link to="/alimentos">
               <span
                 className="uk-margin-small-right"
@@ -66,16 +55,6 @@ const SideNavbar = () => {
           </li>
           <hr></hr>
 
-          <li>
-            <Link to="/recetas">
-              <span
-                className="uk-margin-small-right"
-                uk-icon="icon: database; ratio: 1.1"
-              ></span>
-              <span>Base de recetas</span>
-            </Link>
-          </li>
-          <hr></hr>
         </ul>
       </nav>
     </div>
