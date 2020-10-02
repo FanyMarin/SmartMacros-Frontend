@@ -22,11 +22,11 @@ export const createAlimento = (alimento) => {
 };
 
 //Actualizar alimento 
-export const updateAlimento = () => {
-
+export const updateAlimento = (id) => {
+    return axios.patch(`${base_url}/alimentos/actualizar/${id}`)
 }
 
 //Eliminar alimento
-export const deleteAlimento = () => {
-
+export const deleteAlimento = (id) => {
+    return axios.delete(`${base_url}/alimentos/eliminar/${id}`)
 }
