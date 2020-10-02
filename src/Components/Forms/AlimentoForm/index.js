@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 import { createAlimento } from "../../../Services/alimentosService";
 import SideNavbar from "../../Navbar/SideNavbar";
+// import {Link} from "react-router-dom"
+import Swal from "sweetalert2";
 class AlimentoForm extends Component {
   state = {
     alimento: {},
   };
-
-  //Vamos a tener que aprender a manejar eventos que pasan en el input. Cada que escribimos en el
-  //input va a haber un evento que se llama onChange, que nos va a permitir captar cual es el valor
-  //que esta poniendo el usuario en el input y almacenarlo en el estado para despues mandarlo al
-  //backend
-  //Aqui es donde se va a empezar a hacer un FILTRO para cuando lo ocupes:
-  //Cuando estas escribiendo en el hadleChange vas a ir filtrando todos los elementos con base en
-  //el nombre. Entonces, se va a comparar "Si el nombre contiene las letras que te estoy pasando
-  //entonces si lo agregas como un resultado posible"
 
   handleChange = (e) => {
     let { alimento } = this.state;
@@ -24,8 +17,12 @@ class AlimentoForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { alimento } = this.state;
-    // console.log(alimento);
     createAlimento(alimento).then((res) => {
+      Swal.fire({
+        title: "Alimento creado con éxito 🎉",
+        text: `Ir a ver detalles`,
+        confirmButtonText: "OK",
+      });
     });
   };
 
@@ -33,7 +30,7 @@ class AlimentoForm extends Component {
     return (
       <section className="uk-section uk-margin-remove uk-padding-remove">
         <div className="uk-container uk-flex uk-flex-between uk-padding-remove uk-margin-remove">
-            <SideNavbar />
+          <SideNavbar />
           <img
             className="form-image"
             src="../../alimento.svg"
@@ -41,9 +38,9 @@ class AlimentoForm extends Component {
           />
 
           <div className="uk-width-1-2 form-shadow">
-          <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-          Registrar alimento
-        </h4>
+            <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
+              Registrar alimento
+            </h4>
             <form
               className="uk-width-1-1 uk-padding"
               onSubmit={this.handleSubmit}
@@ -143,10 +140,9 @@ class AlimentoForm extends Component {
 
               {/*Información nutricional */}
               <div className="uk-form-horizontal uk-margin">
-                <p className="uk-text-emphasis forms-font">
-                  Información nutricional
-                </p>
+                <p className="uk-text-emphasis forms-font"></p>
                 <div className="uk-margin uk-text-left">
+                  Información nutricional
                   <label className="uk-form-label" htmlFor="Grasas">
                     Grasas:
                   </label>
@@ -207,6 +203,7 @@ class AlimentoForm extends Component {
                   </div>
                 </div>
               </div>
+
               <button className="ver-mas uk-padding-small uk-light btn">
                 Submit
               </button>

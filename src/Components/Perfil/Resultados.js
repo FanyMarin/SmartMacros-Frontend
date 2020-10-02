@@ -1,7 +1,17 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 
-const Resultados = () => {
+const Resultados = ({
+  Metabolismo_basal,
+  Calorias_de_mantenimiento,
+  Calorias_por_objetivo,
+  Carbohidratos,
+  Proteinas,
+  Grasas,
+  Carbohidratos_por_comida,
+  Proteinas_por_comida,
+  Grasas_por_comida,
+}) => {
   return (
     <div className="uk-padding-remove-bottom">
       <table className="uk-table uk-table-striped uk-padding-remove-top">
@@ -14,19 +24,21 @@ const Resultados = () => {
         </thead>
         <tbody>
           <tr>
-            <td className="uk-text-justify">Metabolismo basal: {} kcal</td>
-            <td className="uk-text-justify">Carbohidratos: {} gr/día</td>
-            <td className="uk-text-justify">Carbohidratos: {} gr</td>
+            <td className="uk-text-justify">Metabolismo basal: {Metabolismo_basal} kcal</td>
+            <td className="uk-text-justify">Carbohidratos: {Carbohidratos} gr/día</td>
+            <td className="uk-text-justify">Carbohidratos: {Carbohidratos_por_comida} gr</td>
           </tr>
           <tr>
-            <td className="uk-text-justify">Calorías de mantenimiento: {} kcal</td>
-            <td className="uk-text-justify">Proteínas: {} gr/día</td>
-            <td className="uk-text-justify">Proteínas: {} gr</td>
+            <td className="uk-text-justify">
+              Calorías de mantenimiento: {Calorias_de_mantenimiento} kcal
+            </td>
+            <td className="uk-text-justify">Proteínas: {Proteinas} gr/día</td>
+            <td className="uk-text-justify">Proteínas: {Proteinas_por_comida} gr</td>
           </tr>
           <tr>
-            <td className="uk-text-justify">Calorías por objetivo: {} kcal</td>
-            <td className="uk-text-justify">Grasas: {} gr/día</td>
-            <td className="uk-text-justify">Grasas: {} gr</td>
+            <td className="uk-text-justify">Calorías por objetivo: {Calorias_por_objetivo} kcal</td>
+            <td className="uk-text-justify">Grasas: {Grasas} gr/día</td>
+            <td className="uk-text-justify">Grasas: {Grasas_por_comida} gr</td>
           </tr>
         </tbody>
       </table>

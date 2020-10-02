@@ -1,14 +1,32 @@
 import axios from "axios";
 import { base_url } from "./variables";
 
+//Obtener todos los alimentos de la DB
 export const getAlimentos = () => {
     return axios.get(`${base_url}/alimentos/`);
 };
 
+//Obtener los alimentos creados por el usuario loggeado
 export const getMisAlimentos = () => {
     return axios.get(`${base_url}/alimentos/mis-alimentos`);
 }
 
+//Obtener los detalles de un alimento
+export const getAlimentoDetalles = (id) => {
+    return axios.get(`${base_url}/alimentos/${id}`);
+}
+
+//Crear alimento
 export const createAlimento = (alimento) => {
     return axios.post(`${base_url}/alimentos/crear-alimento`, alimento);
 };
+
+//Actualizar alimento 
+export const updateAlimento = () => {
+
+}
+
+//Eliminar alimento
+export const deleteAlimento = () => {
+
+}

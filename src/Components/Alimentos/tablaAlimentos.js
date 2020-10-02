@@ -1,14 +1,14 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const tablaAlimentos = ({
   Nombre,
-    Porcion,
-    Unidad_de_medida,
-    Grasas,
-    Carbohidratos,
-    Proteinas,
-    Calorias_kcal,
+  Porcion,
+  Unidad_de_medida,
+  Grasas,
+  Carbohidratos,
+  Proteinas,
+  Calorias_kcal,
 }) => (
   <div className="uk-overflow-auto">
     <table className="uk-table uk-table-middle uk-table-divider">
@@ -16,6 +16,7 @@ const tablaAlimentos = ({
         <tr>
           <th className="uk-table-shrink"></th>
           <th className="uk-width-small"></th>
+          <th className="uk-table-expand"></th>
           <th className="uk-table-expand"></th>
           <th className="uk-table-shrink uk-text-nowrap"></th>
         </tr>
@@ -33,7 +34,9 @@ const tablaAlimentos = ({
           <td className="uk-table-link">{Nombre}</td>
           <td className="uk-text-truncate">
             <ul className="uk-list uk-list-collapse">
-              <li className="uk-text-justify">Carbohidratos: {Carbohidratos} gr</li>
+              <li className="uk-text-justify">
+                Carbohidratos: {Carbohidratos} gr
+              </li>
               <li className="uk-text-justify">Proteinas: {Proteinas} gr</li>
               <li className="uk-text-justify">Grasas: {Grasas} gr</li>
               <li className="uk-text-justify">Calorias {Calorias_kcal} kcal</li>
@@ -43,7 +46,9 @@ const tablaAlimentos = ({
             Cantidad: {Porcion} {Unidad_de_medida}
           </td>
           <td>
-              <button className="btn">AÑADIR</button>
+            <Link to="">
+              <button className="btn">Ver</button>
+            </Link>
           </td>
         </tr>
       </tbody>
