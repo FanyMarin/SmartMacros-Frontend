@@ -4,6 +4,7 @@ import { getAlimentos } from "../../Services/alimentosService";
 import { getMisAlimentos } from "../../Services/alimentosService";
 import SideNavbar from "../Navbar/SideNavbar";
 import { Link } from "react-router-dom";
+
 class Alimentos extends Component {
   state = {
     alimentos: [],
@@ -50,7 +51,7 @@ class Alimentos extends Component {
                 )}
               </div>
             ) : (
-              <div>
+              <div className="wrapper-alimentos">
                 <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
                   Lista de alimentos
                 </h4>

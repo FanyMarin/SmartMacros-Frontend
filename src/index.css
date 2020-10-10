@@ -507,7 +507,7 @@ nav ul a:hover,
 .wrapper-alimentos {
   display: flex;
   flex-direction: column;
-  /* width: 60%; */
+  /* width: 100%; */
   /* margin-left: 10%; */
 }
 

@@ -23,17 +23,6 @@ const SideNavbar = () => {
           <hr></hr>
 
           <li>
-            <Link to="/registros/mis-registros">
-              <span
-                className="uk-margin-small-right"
-                uk-icon="icon: database; ratio: 1.1"
-              ></span>
-              <span>Mis registros</span>
-            </Link>
-          </li>
-          <hr></hr>
-
-          <li>
             <Link to="/alimentos/mis-alimentos">
               <span
                 className="uk-margin-small-right"
