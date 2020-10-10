@@ -47,11 +47,6 @@ class Perfil extends Component {
                 alt="Disfruta"
               />
             </div>
-            <div className="btn-wrapper">
-              <Link to="/users/actualizar/:id">
-                <button className="btn">Actualizar</button>
-              </Link>
-            </div>
           </div>
         </div>
       </div>
