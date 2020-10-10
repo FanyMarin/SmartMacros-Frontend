@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import MiInformacion from "./MiInformacion";
-import SideNavbar from "../Navbar/SideNavbar";
-import { Link } from "react-router-dom";
-import { getMyInfo } from "../../Services/perfilService";
+import SideNavbar from "../../Common/SideNavbar";
+import { getMyInfo } from "../../../Services/perfilService";
 
 class Perfil extends Component {
   state = {

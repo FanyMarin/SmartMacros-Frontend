@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { createAlimento } from "../../../Services/alimentosService";
-import SideNavbar from "../../Navbar/SideNavbar";
-// import {Link} from "react-router-dom"
+import { createAlimento } from "../../Services/alimentosService";
+import SideNavbar from "../Common/SideNavbar";
 import Swal from "sweetalert2";
+
+
 class AlimentoForm extends Component {
   state = {
     alimento: {},

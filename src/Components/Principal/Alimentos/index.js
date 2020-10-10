@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import TablaAlimentos from "../Alimentos/tablaAlimentos";
-import { getAlimentos } from "../../Services/alimentosService";
-import { getMisAlimentos } from "../../Services/alimentosService";
-import SideNavbar from "../Navbar/SideNavbar";
+import { getAlimentos, getMisAlimentos } from "../../../Services/alimentosService";
+import SideNavbar from "../../Common/SideNavbar";
 import { Link } from "react-router-dom";
 
 class Alimentos extends Component {
