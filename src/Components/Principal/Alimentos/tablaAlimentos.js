@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../../Common/Button";
 
 const tablaAlimentos = ({
   Nombre,
@@ -47,7 +48,17 @@ const tablaAlimentos = ({
           </td>
           <td>
             <Link to="">
-              <button className="btn">Ver</button>
+              <Button option="Ver"/>
+            </Link>
+          </td>
+          <td>
+            <Link to="">
+              <Button option="Actualizar"/>
+            </Link>
+          </td>
+          <td>
+            <Link to="">
+              <Button option="Eliminar"/>
             </Link>
           </td>
         </tr>

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import TablaAlimentos from "../Alimentos/tablaAlimentos";
-import { getAlimentos, getMisAlimentos } from "../../../Services/alimentosService";
+import {
+  getAlimentos,
+  getMisAlimentos,
+} from "../../../Services/alimentosService";
 import SideNavbar from "../../Common/SideNavbar";
+import Title from "../../Common/Title";
 import { Link } from "react-router-dom";
 
 class Alimentos extends Component {
@@ -31,9 +35,7 @@ class Alimentos extends Component {
           <div>
             {isAliments ? (
               <div className="wrapper-alimentos">
-                <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-                  Lista de alimentos
-                </h4>
+                <Title title="Lista de alimentos" />
                 {this.state.alimentos.length > 0 ? (
                   this.state.alimentos.map((alimento, index) => (
                     <TablaAlimentos key={index} {...alimento} />
@@ -51,9 +53,8 @@ class Alimentos extends Component {
               </div>
             ) : (
               <div className="wrapper-alimentos">
-                <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-                  Lista de alimentos
-                </h4>
+                <Title title="Mis alimentos" />
+
                 {this.state.misAlimentos.length > 0 ? (
                   this.state.misAlimentos.map((misAlimentos, index) => (
                     <TablaAlimentos key={index} {...misAlimentos} />
@@ -77,6 +78,10 @@ class Alimentos extends Component {
               <Link to="/alimentos/crear-alimento">
                 <button className="btn">Crear alimento</button>
               </Link>
+            </div>
+            <div className="uk-align-right uk-padding-small uk-margin-right uk-background-secondary"
+                uk-totop="true"
+                uk-scroll="true">
             </div>
           </div>
         </div>

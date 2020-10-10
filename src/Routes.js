@@ -15,6 +15,7 @@ const Routes = () => (
         <Route exact path="/alimentos" component={Alimentos}/> 
         <Route exact path="/alimentos/mis-alimentos" component={Alimentos} />
         <Route exact path="/alimentos/crear-alimento" component={AlimentoForm}/> 
+        <Route exact path="/alimentos/actualizar/:id" component={AlimentoForm} />
     </Switch>
 )
 
