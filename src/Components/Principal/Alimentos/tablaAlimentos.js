@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../../Common/Button";
 
 const tablaAlimentos = ({
   Nombre,
@@ -9,6 +10,7 @@ const tablaAlimentos = ({
   Carbohidratos,
   Proteinas,
   Calorias_kcal,
+  _id
 }) => (
   <div className="uk-overflow-auto">
     <table className="uk-table uk-table-middle uk-table-divider">
@@ -46,8 +48,8 @@ const tablaAlimentos = ({
             Cantidad: {Porcion} {Unidad_de_medida}
           </td>
           <td>
-            <Link to="">
-              <button className="btn">Ver</button>
+            <Link to={`/alimentos/${_id}`}>
+              <Button option="Ver"/>
             </Link>
           </td>
         </tr>

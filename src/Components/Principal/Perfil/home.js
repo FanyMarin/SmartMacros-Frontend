@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import MiInformacion from "./MiInformacion";
-import SideNavbar from "../Navbar/SideNavbar";
-import { Link } from "react-router-dom";
-import { getMyInfo } from "../../Services/perfilService";
+import SideNavbar from "../../Common/SideNavbar";
+import Title from "../../Common/Title";
+import { getMyInfo } from "../../../Services/perfilService";
 
 class Perfil extends Component {
   state = {
@@ -26,9 +26,7 @@ class Perfil extends Component {
             <h1 className="title uk-text-success uk-text-bold">Mi perfil</h1>
           </div>
           <div>
-            <h4 className=" forms-title ver-mas uk-padding-small uk-margin-small-bottom uk-light uk-text-uppercase uk-text-bold">
-              Mi información
-            </h4>
+            <Title title="Mi información" />
             <div className="main-my-info">
               <MiInformacion
                 nombre={miInfo.nombre}

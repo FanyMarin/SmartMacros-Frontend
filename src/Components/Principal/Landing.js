@@ -8,8 +8,8 @@ const LandingPage = () => {
         <div className="main-left">
           <h2>¡Smart Macros es tu mejor aliado para aprender a comer! </h2>
           <p>
-            Calcula tus calorías y registra tu diario
-            de alimentos de forma fácil y sencilla. 
+            SmartMacros es una base de datos que te permite obtener 
+            la información nutricional de tus alimentos favoritos de forma fácil y sencilla. 
           </p>
           <Link to="/signup">
             <button className="btn">Aprende más</button>
@@ -20,7 +20,7 @@ const LandingPage = () => {
         </div>
       </section>
       <h2>
-        Todo lo que necesitas para un regimen de alimentación saludable e
+        Todo lo que necesitas para un régimen de alimentación saludable e
         inteligente
       </h2>
       <section className="landing-grid">
@@ -28,15 +28,15 @@ const LandingPage = () => {
           <h3>Aprende</h3>
           <img src="../aprende.svg" className="grid-img" alt="Aprende" />
           <p>
-          Calcula tus necesidades calóricas y de macronutrientes
+          ¡Encuentra la información especifica que requieras en un solo lugar!
 
           </p>
         </div>
         <div className="column second">
-          <h3>Disfruta</h3>
+          <h3>Crea</h3>
           <img src="../disfruta.svg" className="grid-img" alt="Disfruta" />
           <p>
-          ¡Come lo que quieras! Siempre respetando tus objetivos nutricionales.
+          ¿No encuentras lo que buscas? ¡Registra tus propios alimentos!
           </p>
         </div>
         <div className="column third">
@@ -47,18 +47,18 @@ const LandingPage = () => {
             alt="Logra metas"
           />
           <p>
-          Elige tu objetivo, perder peso, mantenerlo o ganar masa muscular.
+          Así es mucho más fácil llevar un régimen alimenticio inteligente
           </p>
         </div>
         <div className="column last">
-          <h3>Vive sin preocupaciones</h3>
+          <h3>Aporta</h3>
           <img
             src="../no_worries.svg"
             className="grid-img"
             alt="Vive sin preocupaciones"
           />
           <p>
-          Distribuye el porcentaje de calorías de tus comidas.
+          ¿Las especificaciones de algun alimento no te convencen? Ayuda a la comunidad actualizandolo
           </p>
         </div>
       </section>

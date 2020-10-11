@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Common/Navbar";
 import "./App.css";
 import Routes from "./Routes";
-import Footer from "./Components/Footer/index";
+import Footer from "./Components/Common/Footer";
 import AppContext from "./AppContext";
 import {withRouter} from 'react-router'
 import {logout} from "./Services/authService"
@@ -39,8 +39,8 @@ class App extends Component {
     );
   }
 }
-
 const AppWithRouter = withRouter(App)
+
 
 export default AppWithRouter;
   

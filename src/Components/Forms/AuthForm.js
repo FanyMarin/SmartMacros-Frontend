@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import UIkit from "uikit";
 import AppContext from "../../AppContext";
 import { login, signup } from "../../Services/authService";
+import Button from "../Common/Button"
 
 class AuthForm extends Component {
   static contextType = AppContext;
@@ -77,7 +78,7 @@ class AuthForm extends Component {
                     placeholder="Contraseña"
                   />
                 </div>
-                <input type="submit" value="Login" className="btn solid" />
+                <Button option="Login"/>
               </form>
             </div>
           ) : (
@@ -240,9 +241,7 @@ class AuthForm extends Component {
                       <option>Alta en proteínas</option>
                       <option>Cetogénica</option>
                     </select>
-                    <button type="submit" className="btn solid">
-                      Registrarse
-                    </button>
+                    <Button option="Registrarse"/>
                   </div>
                 </form>
               </div>

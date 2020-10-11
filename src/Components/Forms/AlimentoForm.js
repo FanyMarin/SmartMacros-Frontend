@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { createAlimento } from "../../../Services/alimentosService";
-import SideNavbar from "../../Navbar/SideNavbar";
-// import {Link} from "react-router-dom"
+import { createAlimento } from "../../Services/alimentosService";
+import SideNavbar from "../Common/SideNavbar";
+import Title from "../Common/Title";
+import Button from "../Common/Button";
 import Swal from "sweetalert2";
+
 class AlimentoForm extends Component {
   state = {
     alimento: {},
@@ -38,9 +40,7 @@ class AlimentoForm extends Component {
           />
 
           <div className="uk-width-1-2 form-shadow">
-            <h4 className=" forms-title ver-mas uk-padding-small uk-light uk-text-uppercase uk-text-bold">
-              Registrar alimento
-            </h4>
+            <Title title="Registrar alimento" />
             <form
               className="uk-width-1-1 uk-padding"
               onSubmit={this.handleSubmit}
@@ -198,15 +198,12 @@ class AlimentoForm extends Component {
                       className="uk-input"
                       id="Calorias_kcal"
                       type="number"
-                      placeholder="kcal (opcional)"
+                      placeholder="kcal"
                     />
                   </div>
                 </div>
               </div>
-
-              <button className="ver-mas uk-padding-small uk-light btn">
-                Submit
-              </button>
+              <Button option="crear" />
             </form>
           </div>
         </div>

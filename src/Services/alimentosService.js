@@ -12,8 +12,8 @@ export const getMisAlimentos = () => {
 }
 
 //Obtener los detalles de un alimento
-export const getAlimentoDetalles = (id) => {
-    return axios.get(`${base_url}/alimentos/${id}`);
+export const getAlimentoDetalles = (_id) => {
+    return axios.get(`${base_url}/alimentos/${_id}`);
 }
 
 //Crear alimento
@@ -22,8 +22,8 @@ export const createAlimento = (alimento) => {
 };
 
 //Actualizar alimento 
-export const updateAlimento = (id) => {
-    return axios.patch(`${base_url}/alimentos/actualizar/${id}`)
+export const updateAlimento = (id, alimento) => {
+    return axios.patch(`${base_url}/alimentos/actualizar/${id}`, alimento)
 }
 
 //Eliminar alimento
