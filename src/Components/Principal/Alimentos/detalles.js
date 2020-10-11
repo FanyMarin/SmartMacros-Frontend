@@ -5,6 +5,7 @@ import SideNavbar from "../../Common/SideNavbar";
 import { getAlimentoDetalles, deleteAlimento } from "../../../Services/alimentosService";
 import { Link } from "react-router-dom";
 import TablaDetalles from "./tablaDetalles";
+import Swal from "sweetalert2";
 
 class Detalles extends Component {
   state = {
@@ -13,7 +14,7 @@ class Detalles extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    if (id) {
+     if (id) {
       getAlimentoDetalles(id).then((res) => {
         const { result: detalles } = res.data;
         this.setState({ detalles });
@@ -21,10 +22,13 @@ class Detalles extends Component {
     }
   }
 
-  handleDelete() {
+  handleDelete = () => {
     const { id } = this.props.match.params;
     deleteAlimento(id).then((res) => {
-      console.log('me elimine', res)
+      Swal.fire({
+        title: "Alimento eliminado",
+        confirmButtonText: "OK",
+      });
     })
   }
 
@@ -66,8 +70,8 @@ class Detalles extends Component {
             >
               <Button option="Actualizar" />
             </Link>
-            <Link className="uk-padding-small" to="#">
-              <Button onClick={this.handleDelete} option="Eliminar" />
+            <Link onClick={this.handleDelete} className="uk-padding-small" to="/alimentos">
+              <Button option="Eliminar" />
             </Link>
           </div>
         </div>
