@@ -52,16 +52,6 @@ const tablaAlimentos = ({
               <Button option="Ver"/>
             </Link>
           </td>
-          <td>
-            <Link to={`/alimentos/actualizar/${_id}`}>
-              <Button option="Actualizar"/>
-            </Link>
-          </td>
-          <td>
-            <Link to="">
-              <Button option="Eliminar"/>
-            </Link>
-          </td>
         </tr>
       </tbody>
     </table>

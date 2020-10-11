@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Title from "../../Common/Title";
 import Button from "../../Common/Button";
 import SideNavbar from "../../Common/SideNavbar";
-import { getAlimentoDetalles } from "../../../Services/alimentosService";
+import { getAlimentoDetalles, deleteAlimento } from "../../../Services/alimentosService";
 import { Link } from "react-router-dom";
 import TablaDetalles from "./tablaDetalles";
 
@@ -19,6 +19,13 @@ class Detalles extends Component {
         this.setState({ detalles });
       });
     }
+  }
+
+  handleDelete() {
+    const { id } = this.props.match.params;
+    deleteAlimento(id).then((res) => {
+      console.log('me elimine', res)
+    })
   }
 
   render() {
@@ -49,9 +56,20 @@ class Detalles extends Component {
               />
             </div>
           </div>
-          <Link to="/alimentos">
-            <Button option="Regresar" />
-          </Link>
+          <div className="uk-padding">
+            <Link className="uk-padding-small" to="/alimentos">
+              <Button option="Regresar" />
+            </Link>
+            <Link
+              className="uk-padding-small"
+              to={`/alimentos/actualizar/${detalles._id}`}
+            >
+              <Button option="Actualizar" />
+            </Link>
+            <Link className="uk-padding-small" to="#">
+              <Button onClick={this.handleDelete} option="Eliminar" />
+            </Link>
+          </div>
         </div>
       </div>
     );

@@ -22,8 +22,8 @@ export const createAlimento = (alimento) => {
 };
 
 //Actualizar alimento 
-export const updateAlimento = (id) => {
-    return axios.patch(`${base_url}/alimentos/actualizar/${id}`)
+export const updateAlimento = (id, alimento) => {
+    return axios.patch(`${base_url}/alimentos/actualizar/${id}`, alimento)
 }
 
 //Eliminar alimento

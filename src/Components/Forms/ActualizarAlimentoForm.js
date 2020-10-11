@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createAlimento } from "../../Services/alimentosService";
+import { updateAlimento } from "../../Services/alimentosService";
 import SideNavbar from "../Common/SideNavbar";
 import Title from "../Common/Title";
 import Button from "../Common/Button";
@@ -10,7 +10,9 @@ class AlimentoForm extends Component {
     alimento: {},
   };
 
+  //Se encarga de actualizar el estado y construyendo el nuevo objeto
   handleChange = (e) => {
+    //sacamos el alimento del state. En la primera iteracion es un objeto vacio
     let { alimento } = this.state;
     alimento = { ...alimento, [e.target.name]: e.target.value };
     this.setState({ alimento });
@@ -18,10 +20,12 @@ class AlimentoForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    //Para hacer el codigo mas limpio, sacamos el alimento del state
     const { alimento } = this.state;
-    createAlimento(alimento).then((res) => {
+    const { id } = this.props.match.params
+    updateAlimento(id, alimento).then((res) => {
       Swal.fire({
-        title: "Alimento creado con éxito 🎉",
+        title: "Alimento actualizado con éxito 🎉",
         text: `Ir a ver detalles`,
         confirmButtonText: "OK",
       });
@@ -40,7 +44,7 @@ class AlimentoForm extends Component {
           />
 
           <div className="uk-width-1-2 form-shadow">
-            <Title title="Registrar alimento" />
+            <Title title="Actualizar alimento" />
             <form
               className="uk-width-1-1 uk-padding"
               onSubmit={this.handleSubmit}
@@ -203,7 +207,7 @@ class AlimentoForm extends Component {
                   </div>
                 </div>
               </div>
-              <Button option="crear" />
+              <Button option="actualizar" />
             </form>
           </div>
         </div>
