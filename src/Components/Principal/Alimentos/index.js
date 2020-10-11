@@ -36,7 +36,7 @@ class Alimentos extends Component {
             {isAliments ? (
               <div className="wrapper-alimentos">
                 <Title title="Lista de alimentos" />
-                {this.state.alimentos.length > 0 ? (
+                  {this.state.alimentos.length > 0 ? (
                   this.state.alimentos.map((alimento, index) => (
                     <TablaAlimentos key={index} {...alimento} />
                   ))

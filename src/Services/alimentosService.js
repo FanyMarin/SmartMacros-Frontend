@@ -12,8 +12,8 @@ export const getMisAlimentos = () => {
 }
 
 //Obtener los detalles de un alimento
-export const getAlimentoDetalles = (id) => {
-    return axios.get(`${base_url}/alimentos/${id}`);
+export const getAlimentoDetalles = (_id) => {
+    return axios.get(`${base_url}/alimentos/${_id}`);
 }
 
 //Crear alimento
