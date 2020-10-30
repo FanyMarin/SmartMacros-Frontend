@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import UIkit from "uikit";
 import AppContext from "../../AppContext";
 import { login, signup } from "../../Services/authService";
 import Button from "../Common/Button";
@@ -32,7 +31,7 @@ class AuthForm extends Component {
       .catch((err) => {
         if (isLogin) {
           Swal.fire({
-            title: "Error al iniciar sesion",
+            title: "Error al iniciar sesión",
             text: `Por favor, intenta nuevamente`,
             confirmButtonText: "OK",
           });
