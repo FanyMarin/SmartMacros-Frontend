@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import UIkit from "uikit";
 import AppContext from "../../AppContext";
 import { login, signup } from "../../Services/authService";
-import Button from "../Common/Button"
+import Button from "../Common/Button";
+import Swal from "sweetalert2";
 
 class AuthForm extends Component {
   static contextType = AppContext;
@@ -29,18 +30,25 @@ class AuthForm extends Component {
         history.push(nextRoute);
       })
       .catch((err) => {
-        UIkit.notification({
-          message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
-          status: "danger",
-          pos: "top-right",
-        });
+        if (isLogin) {
+          Swal.fire({
+            title: "Error al iniciar sesion",
+            text: `Por favor, intenta nuevamente`,
+            confirmButtonText: "OK",
+          });
+        } else {
+          Swal.fire({
+            title: "Este correo ya está registrado con otro usuario",
+            text: `Por favor, intenta nuevamente`,
+            confirmButtonText: "OK",
+          });
+        }
       });
   };
 
   handleChange = (e) => {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
-    console.log(user);
     this.setState({ user });
   };
   render() {
@@ -78,7 +86,7 @@ class AuthForm extends Component {
                     placeholder="Contraseña"
                   />
                 </div>
-                <Button option="Login"/>
+                <Button option="Login" />
               </form>
             </div>
           ) : (
@@ -241,7 +249,7 @@ class AuthForm extends Component {
                       <option>Alta en proteínas</option>
                       <option>Cetogénica</option>
                     </select>
-                    <Button option="Registrarse"/>
+                    <Button option="Registrarse" />
                   </div>
                 </form>
               </div>
